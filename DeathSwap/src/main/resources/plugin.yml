@@ -1,0 +1,13 @@
+name: Deathswap
+version: ${project.version}
+main: io.github.ashirtyarava.deathswap.Deathswap
+api-version: 1.16
+authors: [ Ashrit ]
+description: Deathswap plugin for playing the Death Swap game.
+website: https://ashrit-yarava.github.io/plugins/deathswap
+
+commands:
+  deathswap:
+    description: Primary interface for the DeathSwap plugin.
+    usage: /<command> start, /<command> add (playername), /<command> list
+    permission: DeathSwap.deathswap
