@@ -15,10 +15,12 @@ import java.util.Objects;
 
 public class CommandKit implements CommandExecutor {
 
-    Handler handler = new Handler();
+    Handler handler;
+    int time;
 
     public CommandKit() {
         handler = new Handler();
+        time = 300;
     }
 
     @Override
@@ -56,6 +58,16 @@ public class CommandKit implements CommandExecutor {
                         Bukkit.getPlayer(args[1]).sendMessage("You have been removed from DeathSwap.");
                     }
                 }
+            } else if(args[0].equalsIgnoreCase("start")) {
+                handler.gameInProgress = true;
+            } else if(args[0].equalsIgnoreCase("stop")) {
+                handler.gameInProgress = false;
+            } else if(args[0].equalsIgnoreCase("time") && args.length > 1) {
+                try {
+                    time = Integer.parseInt(args[1]);
+                } catch (NumberFormatException e) {
+                    player.sendMessage("Invalid time.");
+                }
             }
         } else {
             // only players should be able to run this command.
@@ -66,6 +78,9 @@ public class CommandKit implements CommandExecutor {
 
     private static void printUsage(Player player) {
         player.sendMessage("Usage:\n" +
+                "/deathswap start - Start the deathswap game.\n" +
+                "/deathswap stop - Stop the deathswap game.\n" +
+                "/deathswap time (seconds) - Set the amount of time between each swap.\n" +
                 "/deathswap addPlayer (playername) - Adds a player to the game.\n" +
                 "/deathswap removePlayer (playername) - Removes a player from the game.\n" +
                 "/deathswap list - Lists the players that are currently playing.\n" +

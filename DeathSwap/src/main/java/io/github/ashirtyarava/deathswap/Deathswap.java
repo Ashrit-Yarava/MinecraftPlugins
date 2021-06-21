@@ -17,12 +17,6 @@ public final class Deathswap extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        FileConfiguration config = this.getConfig();
-        config.addDefault("time", 60);
-        this.saveDefaultConfig();
-        // Create and read config file.
-        seconds = config.getInt("time");
-        remainingSeconds = seconds;
 
         // Print the startup message.
         Logger logger = getLogger();
@@ -41,19 +35,34 @@ public final class Deathswap extends JavaPlugin {
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, new Runnable() {
             @Override
             public void run() {
-                Bukkit.getLogger().info("Time Remaining: " + remainingSeconds);
-                if(remainingSeconds < 20 && remainingSeconds > 0) {
-                    kit.printTime(remainingSeconds);
-                    remainingSeconds--;
-                }
-                else if(remainingSeconds == 0) {
-                    kit.teleport();
-                    remainingSeconds = seconds;
+                if(kit.handler.gameInProgress == true) {
+                    if(remainingSeconds <= 10 && remainingSeconds > 0) {
+                        kit.printTime(remainingSeconds);
+                        remainingSeconds--;
+                    }
+                    else if(remainingSeconds == 0) {
+                        kit.teleport();
+                        remainingSeconds = seconds;
+                    } else {
+                        remainingSeconds--;
+                    }
                 } else {
-                    remainingSeconds--;
+                    seconds = kit.time;
+                    remainingSeconds = seconds;
                 }
             }
         }, 0L, 20);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, new Runnable() {
+            @Override
+            public void run() {
+                kit.handler.removeDead();
+                if(kit.handler.players.size() == 1) {
+                    kit.handler.gameInProgress = false;
+                    kit.handler.players.get(0).sendMessage("You have won the DeathSwap game!");
+                    kit.handler.players.clear();
+                }
+            }
+        }, 0, 10);
     }
 
     @Override
