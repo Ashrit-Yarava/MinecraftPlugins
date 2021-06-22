@@ -83,8 +83,7 @@ public class CommandKit implements CommandExecutor {
                 "/deathswap time (seconds) - Set the amount of time between each swap.\n" +
                 "/deathswap addPlayer (playername) - Adds a player to the game.\n" +
                 "/deathswap removePlayer (playername) - Removes a player from the game.\n" +
-                "/deathswap list - Lists the players that are currently playing.\n" +
-                "/deathswap reload - Reload the plugin. (Deletes all players that are playing.)");
+                "/deathswap list - Lists the players that are currently playing.\n");
     }
 
     public void teleport() {

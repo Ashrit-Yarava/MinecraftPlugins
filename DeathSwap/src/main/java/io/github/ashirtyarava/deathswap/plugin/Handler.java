@@ -1,6 +1,6 @@
 package io.github.ashirtyarava.deathswap.plugin;
 
-import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ public class Handler {
     public boolean gameInProgress;
 
     public Handler() {
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
         gameInProgress = false;
     }
 
@@ -36,9 +36,9 @@ public class Handler {
     }
 
     public String listPlayers() {
-        String text = "Players:\n---------------\n";
+        StringBuilder text = new StringBuilder("Players:\n---------------\n");
         for(Player i: players) {
-            text += i.getName() + "\n";
+            text.append(i.getName()).append("\n");
         }
         return text + "---------------";
     }
@@ -72,7 +72,7 @@ public class Handler {
 
     public void printTime(int seconds) {
         for(Player i: players) {
-            i.sendMessage(seconds + " left till the next swap.");
+            i.sendMessage(ChatColor.RED + "" + seconds + " left till the next swap.");
         }
     }
 
