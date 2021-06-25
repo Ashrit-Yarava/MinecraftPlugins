@@ -52,6 +52,7 @@ public final class Deathswap extends JavaPlugin {
                 kit.handler.gameInProgress = false;
                 kit.handler.players.get(0).sendMessage(ChatColor.GREEN + "You have won the DeathSwap game!");
                 kit.handler.players.clear();
+				kit.handler.gameInProgress = false;
             }
         }, 0, 10);
     }

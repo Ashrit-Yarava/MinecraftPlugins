@@ -38,7 +38,7 @@ public class Handler {
     public String listPlayers() {
         StringBuilder text = new StringBuilder("Players:\n---------------\n");
         for(Player i: players) {
-            text.append(i.getName()).append("\n");
+            text.append(ChatColor.GREEN + i.getName()).append("\n");
         }
         return text + "---------------";
     }

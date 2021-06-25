@@ -1,0 +1,13 @@
+name: Compass
+version: ${project.version}
+main: io.github.ashrityarava.compass.Compass
+api-version: 1.17
+authors: [ Ashrit_Yarava ]
+description: A player tracking compass.
+website: https://ashrit-yarava.github.io/plugins/compass
+
+commands:
+  compass:
+    description: Control where compass points to.
+    usage: /compass <player name>, /compass reset
+    permission: Compass.compass
