@@ -1,9 +1,9 @@
-name: Compass
+name: PlayerCompass
 version: ${project.version}
-main: io.github.ashrityarava.compass.Compass
+main: io.github.ashrityarava.playercompass.PlayerCompass
 api-version: 1.16
 authors: [ Ashrit_Yarava ]
-description: A player tracking compass.
+description: A compass to track players with
 website: https://ashrit-yarava.github.io/plugins/compass
 
 commands:

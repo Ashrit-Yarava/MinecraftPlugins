@@ -1,4 +1,4 @@
-package io.github.ashrityarava.compass.utils;
+package io.github.ashrityarava.playercompass.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,8 +20,7 @@ public class CommandKit implements CommandExecutor {
 
     Handler handler;
 
-    public CommandKit(Handler handler) {
-        super();
+    public void setHandler(Handler handler) {
         this.handler = handler;
     }
 
@@ -64,3 +63,4 @@ public class CommandKit implements CommandExecutor {
     }
 
 }
+

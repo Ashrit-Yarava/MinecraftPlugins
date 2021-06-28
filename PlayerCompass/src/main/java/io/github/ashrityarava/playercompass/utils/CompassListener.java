@@ -1,4 +1,4 @@
-package io.github.ashrityarava.compass.utils;
+package io.github.ashrityarava.playercompass.utils;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,8 +13,7 @@ public class CompassListener implements Listener {
 
     Handler handler;
 
-    public CompassListener(Handler handler) {
-        super();
+    public void setHandler(Handler handler) {
         this.handler = handler;
     }
 
@@ -32,3 +31,4 @@ public class CompassListener implements Listener {
 
     }
 }
+

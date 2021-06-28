@@ -1,6 +1,10 @@
 package io.github.ashrityarava.compass;
 
+import io.github.ashrityarava.compass.utils.CommandKit;
+import io.github.ashrityarava.compass.utils.CompassListener;
+import io.github.ashrityarava.compass.utils.Handler;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
@@ -15,8 +19,12 @@ public final class Compass extends JavaPlugin {
 
         printStartup();
 
+        Handler handler = new Handler();
+        CommandKit kit = new CommandKit(handler);
+        CompassListener listener = new CompassListener(handler);
 
-
+        Bukkit.getServer().getPluginManager().registerEvents(listener, this);
+        this.getCommand("compass").setExecutor(kit);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package io.github.ashrityarava.compass.utils;
+package io.github.ashrityarava.playercompass.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
