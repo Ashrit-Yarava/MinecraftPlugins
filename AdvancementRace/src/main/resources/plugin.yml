@@ -6,7 +6,7 @@ description: Starts a competition between players to see who will be the last to
 author: Sriyaank Vadlamani
 
 commands:
-  deathswap:
+  advancementrace:
     description: Primary interface for the Advancementrace plugin.
     usage: /<command> start, /<command> add (playername), /<command> list
     permission: AdvancementRace.advancementrace
