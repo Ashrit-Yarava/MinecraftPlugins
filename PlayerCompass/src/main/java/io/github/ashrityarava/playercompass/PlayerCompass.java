@@ -1,5 +1,9 @@
 package io.github.ashrityarava.playercompass;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.util.RGBLike;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,14 +21,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.common.value.qual.IntRange;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
+import java.util.UUID;
 
 public final class PlayerCompass extends JavaPlugin {
 
-    Map<Player, Player> trackers;
+    Map<UUID, UUID> trackers;
 
     @SuppressWarnings("SortedCollectionWithNonComparableKeys")
     @Override
@@ -32,7 +38,7 @@ public final class PlayerCompass extends JavaPlugin {
 
         trackers = new TreeMap<>();
         // Register Plugins.
-        Objects.requireNonNull(this.getCommand("compass")).setExecutor(new CommandKit());
+        this.getCommand("compass").setExecutor(new CommandKit());
         Bukkit.getServer().getPluginManager().registerEvents(new CompassListener(), this);
 
     }
@@ -65,7 +71,23 @@ public final class PlayerCompass extends JavaPlugin {
                         ItemMeta meta = compassItem.getItemMeta();
                         assert meta != null;
                         meta.addEnchant(Enchantment.VANISHING_CURSE, 1, true);
-                        meta.setDisplayName("Hunter's Compass");
+                        @NonNull TextComponent name = Component.text("Hunter's Compass").color(TextColor.color(new RGBLike() {
+                            @Override
+                            public @IntRange(from = 0L, to = 255L) int red() {
+                                return 255;
+                            }
+
+                            @Override
+                            public @IntRange(from = 0L, to = 255L) int green() {
+                                return 215;
+                            }
+
+                            @Override
+                            public @IntRange(from = 0L, to = 255L) int blue() {
+                                return 0;
+                            }
+                        }));
+                        meta.displayName(name);
                         compassItem.setItemMeta(meta);
                         player.getInventory().addItem(compassItem);
                         player.sendMessage(ChatColor.GRAY + "New Compass Has Been Given.");
@@ -73,10 +95,9 @@ public final class PlayerCompass extends JavaPlugin {
                         // Add new player to trackers list if the player exists.
                         Player trackedPlayer = Bukkit.getPlayer(args[0]);
                         if(trackedPlayer != null)
-                            trackers.put(player, trackedPlayer);
+                            trackers.put(player.getUniqueId(), trackedPlayer.getUniqueId());
                         else {
                             log(ChatColor.RED + args[0] + " was not found.");
-                            return false;
                         }
                     }
                 } else {
@@ -85,7 +106,6 @@ public final class PlayerCompass extends JavaPlugin {
             } else {
                 log("Only players can execute this command.");
                 // Only players should be able to track other players.
-                return false;
             }
             return true;
         }
@@ -108,16 +128,34 @@ public final class PlayerCompass extends JavaPlugin {
             ItemStack item = event.getItem();
 
             // IF (Player Right Clicks) && (Player is holding compass), reset the compass to the latest location of tracked player.
-            if((action.equals(Action.RIGHT_CLICK_BLOCK) || action.equals(Action.RIGHT_CLICK_AIR)) && Objects.requireNonNull(item).getType().equals(Material.COMPASS)) {
-                if(trackers.containsKey(player)) {
-                    player.setCompassTarget(trackers.get(player).getLocation());
-                    log(player.getName() + " is now tracking " + trackers.get(player).getName());
-                } else {
-                    Location worldSpawn = player.getWorld().getSpawnLocation();
-                    player.setCompassTarget(worldSpawn);
+            if((action.equals(Action.RIGHT_CLICK_BLOCK) || action.equals(Action.RIGHT_CLICK_AIR))) {
+                if(item == null) {
+                    if (trackers.containsKey(player.getUniqueId())) {
+                        player.setCompassTarget(Bukkit.getPlayer(trackers.get(player.getUniqueId())).getLocation());
+                        player.sendMessage(ChatColor.DARK_GREEN + "Now tracking " + Bukkit.getPlayer(trackers.get(player.getUniqueId())).getName());
+                    } else {
+                        Location worldSpawn = player.getWorld().getSpawnLocation();
+                        player.setCompassTarget(worldSpawn);
+                        player.sendMessage(ChatColor.RED + "No one to track.");
+                    }
+                    return;
+                }
+                if (item.getType().equals(Material.COMPASS)) {
+                    if (trackers.containsKey(player.getUniqueId())) {
+                        player.setCompassTarget(Bukkit.getPlayer(trackers.get(player.getUniqueId())).getLocation());
+                        player.sendMessage(ChatColor.DARK_GREEN + "Now tracking " + Bukkit.getPlayer(trackers.get(player.getUniqueId())).getName());
+                    } else {
+                        Location worldSpawn = player.getWorld().getSpawnLocation();
+                        player.setCompassTarget(worldSpawn);
+                        player.sendMessage(ChatColor.GREEN + "No one to track.");
+                    }
                 }
             }
         }
+
+    }
+
+    public static void main(String[] args) {
 
     }
 

@@ -6,7 +6,7 @@ authors: [ Ashrit_Yarava ]
 description: A compass to track players.
 website: https://ashrit-yarava.github.io/plugins/playercompass
 
-command:
+commands:
   compass:
     description: A compass to track the location of other players.
     usage: /compass <playername>, /compass give, /compass reset
