@@ -1,0 +1,8 @@
+name: RisingLava
+version: ${project.version}
+main: io.github.ashrityarava.risinglava.RisingLava
+api-version: 1.17
+load: STARTUP
+authors: [ Ashrit_Yarava ]
+description: Play the Rising Lava Game.
+website: https://ashrit-yarava.github.io/plugins/lava
