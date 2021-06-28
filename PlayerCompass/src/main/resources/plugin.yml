@@ -1,0 +1,7 @@
+name: PlayerCompass
+version: ${project.version}
+main: io.github.ashrityarava.playercompass.PlayerCompass
+api-version: 1.17
+authors: [ Ashrit_Yarava ]
+description: A plugin to add a compass to track players.
+website: https://ashrit-yarava.github.io/plugins/playercompass
