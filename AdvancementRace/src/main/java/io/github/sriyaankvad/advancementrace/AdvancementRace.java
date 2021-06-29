@@ -15,7 +15,7 @@ public final class AdvancementRace extends JavaPlugin {
         getLogger().info("Advancement Race: A Plugin for Minecraft 1.16.5 by Sriyaank Vadlamani");
 
         CommandKit kit = new CommandKit();
-        Objects.requireNonNull(this.getCommand("advancementrace")).setExecutor(kit);
+        this.getCommand("advancementrace").setExecutor(kit);
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
             if(kit.handler.gameInProgress) {
