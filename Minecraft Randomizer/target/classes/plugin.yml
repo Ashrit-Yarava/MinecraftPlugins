@@ -1,0 +1,6 @@
+name: MinecraftRandomizer
+version: 1.0-SNAPSHOT
+main: io.github.sriyaankvad.minecraftrandomizer.minecraftrandomizer.MinecraftRandomizer
+api-version: 1.17
+authors: [ Sriyaank_Vadlamani ]
+description: Randomizes the drop of each block
