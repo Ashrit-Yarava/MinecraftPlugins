@@ -14,9 +14,13 @@ public class Handler {
         Material[] materials = Material.values();
 
         for(Material block : materials) {
-            Material drop = materials[(int)(Math.random()* materials.length)];
-
-            if(drop.isItem() && block.isBlock()) map.put(block, drop);
+            if(block.isBlock()) {
+                int pos;
+                do {
+                    pos = (int)(Math.random()* materials.length);
+                } while(!materials[pos].isItem());
+                map.put(block, materials[pos]);
+            }
         }
     }
 
