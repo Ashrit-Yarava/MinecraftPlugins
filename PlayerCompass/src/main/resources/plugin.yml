@@ -3,11 +3,15 @@ version: ${project.version}
 main: io.github.ashrityarava.playercompass.PlayerCompass
 api-version: 1.16
 authors: [ Ashrit_Yarava ]
-description: A compass to track players.
-website: https://ashrit-yarava.github.io/plugins/playercompass
+description: A player compass.
 
 commands:
   compass:
-    description: A compass to track the location of other players.
-    usage: /compass <playername>, /compass give, /compass reset
+    usage: /compass give, /compass <player name>
+    description: A compass that can be used to track the locations of other players.
     permission: PlayerCompass.compass
+
+permissions:
+  PlayerCompass.compass:
+    description: Allows user to use player compass.
+    default: true
