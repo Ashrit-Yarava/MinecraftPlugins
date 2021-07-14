@@ -11,6 +11,7 @@ public class Handler {
     public TreeMap<Material, Material> map;
 
     public Handler() {
+        map = new TreeMap<>();
         Material[] materials = Material.values();
 
         for(Material block : materials) {
