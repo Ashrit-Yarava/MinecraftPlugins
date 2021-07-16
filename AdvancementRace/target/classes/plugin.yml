@@ -1,7 +1,7 @@
 name: AdvancementRace
 version: 1.0-SNAPSHOT
 main: io.github.sriyaankvad.advancementrace.AdvancementRace
-api-version: 1.16.5
+api-version: 1.16
 description: Starts a competition between players to see who will be the last to fail to get a specific advancement
 author: Sriyaank Vadlamani
 
