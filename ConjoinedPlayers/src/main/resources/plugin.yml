@@ -1,0 +1,11 @@
+name: Conjoinedplayers
+version: ${project.version}
+main: io.github.sriyaankvad.conjoinedplayers.Conjoinedplayers
+api-version: 1.17
+authors: [ Sriyaank_Vadlamani ]
+description: Has multiple players control one character, with the tasks split between the players
+
+commands:
+  conjoinplayers:
+    description: Primary interface for the Conjoinedplayers plugin.
+    permission: ConjoinedPlayers.conjoinedplayers
