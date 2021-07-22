@@ -12,13 +12,8 @@ import java.util.Objects;
 
 public class CommandKit implements CommandExecutor {
 
-    public Handler handler;
-    public int time;
-
-    public CommandKit() {
-        handler = new Handler();
-        time = 300;
-    }
+    public Handler handler = new Handler();
+    public int time = 300;
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {

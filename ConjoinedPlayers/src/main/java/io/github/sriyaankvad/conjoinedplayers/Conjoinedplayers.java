@@ -16,7 +16,18 @@ public final class Conjoinedplayers extends JavaPlugin {
         RestrictedListener[] listeners = {
                 new TwoPlayers(), new ThreePlayers(), new FourPlayers(), new FivePlayers()
         };
-        getServer().getPluginManager().registerEvents(listeners[kit.players.size()-2], this);
+
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
+            if(kit.enableListeners) {
+                getServer().getPluginManager().registerEvents(listeners[kit.players.size()-2], this);
+                kit.enableListeners = false;
+            }
+
+            if(kit.disableListeners) {
+                getServer().getPluginManager().disablePlugin(this);
+                kit.disableListeners = false;
+            }
+        }, 0, 20L);
 
         syncInventories syncer = new syncInventories(kit.players);
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, syncer::checkForSyncInventory, 0, 1);
