@@ -17,9 +17,11 @@ public final class Conjoinedplayers extends JavaPlugin {
                 new TwoPlayers(), new ThreePlayers(), new FourPlayers(), new FivePlayers()
         };
 
+        final syncInventories[] syncer = new syncInventories[1];
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
             if(kit.enableListeners) {
                 getServer().getPluginManager().registerEvents(listeners[kit.players.size()-2], this);
+                syncer[0] = new syncInventories(kit.players);
                 kit.enableListeners = false;
             }
 
@@ -29,8 +31,7 @@ public final class Conjoinedplayers extends JavaPlugin {
             }
         }, 0, 20L);
 
-        syncInventories syncer = new syncInventories(kit.players);
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, syncer::checkForSyncInventory, 0, 1);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, syncer[0]::checkForSyncInventory, 0, 1);
 
     }
 
