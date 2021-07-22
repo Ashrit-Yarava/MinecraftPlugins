@@ -9,7 +9,7 @@ public final class Conjoinedplayers extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getLogger().info("Minecraft Randomizer: A Plugin for Minecraft 1.171 by Sriyaank Vadlamani");
+        getLogger().info("Minecraft Randomizer: A Plugin for Minecraft 1.17.1 by Sriyaank Vadlamani");
 
         CommandKit kit = new CommandKit();
         this.getCommand("conjoinplayers").setExecutor(kit);
@@ -17,21 +17,13 @@ public final class Conjoinedplayers extends JavaPlugin {
                 new TwoPlayers(), new ThreePlayers(), new FourPlayers(), new FivePlayers()
         };
 
-        final syncInventories[] syncer = new syncInventories[1];
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            if(kit.enableListeners) {
+            if(kit.isEnabled) {
                 getServer().getPluginManager().registerEvents(listeners[kit.players.size()-2], this);
-                syncer[0] = new syncInventories(kit.players);
-                kit.enableListeners = false;
-            }
-
-            if(kit.disableListeners) {
-                getServer().getPluginManager().disablePlugin(this);
-                kit.disableListeners = false;
+                syncInventories syncer = new syncInventories(kit.players);
+                syncer.checkForSyncInventory();
             }
         }, 0, 20L);
-
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, syncer[0]::checkForSyncInventory, 0, 1);
 
     }
 

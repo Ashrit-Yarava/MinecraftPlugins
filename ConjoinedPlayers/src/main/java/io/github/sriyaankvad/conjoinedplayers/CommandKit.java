@@ -13,13 +13,12 @@ public class CommandKit implements CommandExecutor {
     public Player player1, player2, player3;
     public ArrayList<Player> players = new ArrayList<>();
 
-    public boolean enableListeners = false;
-    public boolean disableListeners = false;
+    public boolean isEnabled = false;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args[0].equals("stop")) {
-            disableListeners = true;
+            isEnabled = false;
             return true;
         }
 
@@ -39,7 +38,7 @@ public class CommandKit implements CommandExecutor {
             players.add(Bukkit.getPlayer(player));
             (Bukkit.getPlayer(player)).setInvisible(true);
 
-            enableListeners = true;
+            isEnabled = true;
         }
         players.get(0).setInvisible(false);
 
