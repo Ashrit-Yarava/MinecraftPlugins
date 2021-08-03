@@ -1,9 +1,9 @@
 name: AdvancementRace
 version: ${project.version}
-main: io.github.sriyaankvad.advancementrace.AdvancementRace
-api-version: 1.16
-description: Starts a competition between players to see who will be the last to fail to get a specific advancement
-author: Sriyaank Vadlamani
+main: io.github.sriyaankvad.advancementrace.advancementrace.Advancementrace
+api-version: 1.17
+authors: [ Sriyaank_Vadlamani ]
+description: A minigame where multiple people race to complete an advancement before time runs out
 
 commands:
   advacementrace:

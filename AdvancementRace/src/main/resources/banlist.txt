@@ -20,6 +20,10 @@ end/dragon_breath
 end/find_end_city
 end/elytra
 end/levitate
+adventure/spyglass_at_parrot
+adventure/lightning_rod_with_villager_no_fire
+adventure/walk_on_powder_snow_with_leather_boots
+adventure/spyglass_at_ghast
 adventure/hero_of_the_village
 adventure/kill_all_mobs
 adventure/totem_of_undying
@@ -28,7 +32,9 @@ adventure/two_birds_one_arrow
 adventure/whos_the_pillager_now
 adventure/arbalistic
 adventure/adventuring_time
+adventure/spyglass_at_dragon
 adventure/very_very_frightening
+husbandry/ride_a_boat_with_a_goat
 husbandry/silk_touch_nest
 husbandry/bred_all_animals
 husbandry/complete_catalogue

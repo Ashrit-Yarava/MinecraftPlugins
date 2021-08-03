@@ -6,6 +6,7 @@ import org.bukkit.advancement.Advancement;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,13 +30,12 @@ public class AdvancementGenerator {
     private boolean isBanned(Advancement advancement) {
         try {
             String name = advancement.getKey().getNamespace();
-            File fileToRead = new File("src/main/resources/BanList.txt");
-            BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+            BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/banlist.txt")));
             String line = null;
 
             while ((line = br.readLine()) != null)
                 if (line.equalsIgnoreCase(name))
-                   return true;
+                    return true;
 
         } catch (Exception e) {
             return false;

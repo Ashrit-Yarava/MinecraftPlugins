@@ -1,48 +1,48 @@
 package io.github.sriyaankvad.advancementrace;
 
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class AdvancementRace extends JavaPlugin {
+public final class Advancementrace extends JavaPlugin {
 
-    private int remainingseconds;
+    int remainingseconds;
 
     @Override
     public void onEnable() {
-        getLogger().info("Advancement Race: A Plugin for Minecraft 1.16.5 by Sriyaank Vadlamani");
+        // Plugin startup logic
+        getLogger().info("Advancement Race: A Plugin for Minecraft 1.17.1 by Sriyaank Vadlamani");
 
         CommandKit kit = new CommandKit();
         this.getCommand("advancementrace").setExecutor(kit);
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            if(kit.handler.gameInProgress) {
+            if(kit.gameInProgress) {
                 if (remainingseconds <= 10 && remainingseconds > 0) {
-                    kit.handler.broadcast(ChatColor.RED + "" + remainingseconds + " seconds left");
+                    kit.broadcast(ChatColor.RED + "" + remainingseconds + " seconds left");
                     remainingseconds--;
                 } else if (remainingseconds == 0) {
-                    kit.handler.endRound();
-                    if(!kit.handler.gameInProgress)
+                    kit.endRound();
+                    if(!kit.gameInProgress)
                         return;
-                    kit.handler.init();
+                    kit.init();
                     remainingseconds = kit.time;
                 } else {
                     remainingseconds--;
                 }
-            }
-            else {
+            } else {
                 remainingseconds = kit.time;
             }
         }, 0L, 20L);
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            kit.handler.checkAdvancementCompletion();
+            kit.checkAdvancementCompletion();
         }, 0, 2L);
-
     }
 
     @Override
     public void onDisable() {
-        Bukkit.getLogger().info("Thank you for using this plugin");
+        // Plugin shutdown logic
+        getLogger().info("Thanks for using this plugin");
     }
 }
