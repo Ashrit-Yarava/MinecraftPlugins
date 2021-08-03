@@ -6,7 +6,7 @@ authors: [ Sriyaank_Vadlamani ]
 description: A minigame where multiple people race to complete an advancement before time runs out
 
 commands:
-  advacementrace:
+  advancementrace:
     description: Primary interface for the Advancementrace plugin.
     usage: /<command> start, /<command> add (playername), /<command> list
     permission: AdvancementRace.advancementrace
