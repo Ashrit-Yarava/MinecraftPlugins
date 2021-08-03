@@ -13,19 +13,25 @@ import java.util.ArrayList;
 
 public class CommandKit implements CommandExecutor {
 
-    ArrayList<Player> players;
-    ArrayList<Advancement> advancements;
-    AdvancementGenerator generator;
-    boolean gameInProgress;
-    int time;
+//    ArrayList<Player> players;
+//    ArrayList<Advancement> advancements;
+//    AdvancementGenerator generator;
+//    boolean gameInProgress;
+//    int time;
+//
+//    public CommandKit() {
+//        players = new ArrayList<>();
+//        advancements = new ArrayList<>();
+//        generator = new AdvancementGenerator();
+//        gameInProgress = false;
+//        time = 300;
+//    }
 
-    public CommandKit() {
-        players = new ArrayList<>();
-        advancements = new ArrayList<>();
-        generator = new AdvancementGenerator();
-        gameInProgress = false;
-        time = 300;
-    }
+    ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Advancement> advancements = new ArrayList<>();
+    AdvancementGenerator generator = new AdvancementGenerator();
+    boolean gameInProgress = false;
+    int time = 300;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
