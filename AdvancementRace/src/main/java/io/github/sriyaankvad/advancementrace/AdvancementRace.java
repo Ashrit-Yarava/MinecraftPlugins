@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Advancementrace extends JavaPlugin {
 
-    int remainingseconds;
+    int remainingseconds = 0;
 
     @Override
     public void onEnable() {
