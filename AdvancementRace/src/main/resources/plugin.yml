@@ -1,6 +1,6 @@
 name: AdvancementRace
 version: ${project.version}
-main: io.github.sriyaankvad.advancementrace.advancementrace.Advancementrace
+main: io.github.sriyaankvad.advancementrace.Advancementrace
 api-version: 1.17
 authors: [ Sriyaank_Vadlamani ]
 description: A minigame where multiple people race to complete an advancement before time runs out
