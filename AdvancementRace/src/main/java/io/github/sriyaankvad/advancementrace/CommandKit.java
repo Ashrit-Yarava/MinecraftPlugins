@@ -81,6 +81,7 @@ public class CommandKit implements CommandExecutor {
                 else {
                     gameInProgress = true;
                     broadcast(ChatColor.GREEN + "The Advancement Race has begun!!!");
+                    init();
                 }
             } else if(args[0].equalsIgnoreCase("stop")) {
                 if (!gameInProgress)
@@ -88,6 +89,7 @@ public class CommandKit implements CommandExecutor {
                             "There is no game in progress.");
                 else {
                     gameInProgress = false;
+                    endRound();
                     broadcast(ChatColor.AQUA + "The Advancement Race has ended. Thank you for playing.");
                 }
             }

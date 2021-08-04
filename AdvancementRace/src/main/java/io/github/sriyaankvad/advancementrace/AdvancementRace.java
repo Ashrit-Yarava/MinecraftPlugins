@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Advancementrace extends JavaPlugin {
 
-    int remainingseconds = 0;
+    int remainingseconds;
 
     @Override
     public void onEnable() {
@@ -35,9 +35,7 @@ public final class Advancementrace extends JavaPlugin {
             }
         }, 0L, 20L);
 
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
-            kit.checkAdvancementCompletion();
-        }, 0, 2L);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, kit::checkAdvancementCompletion, 0, 2L);
     }
 
     @Override
