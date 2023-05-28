@@ -34,8 +34,6 @@ public class Lives {
      * @return true if lives were successfully decreased, false otherwise
      */
     public boolean decreaseLives(Player loser) {
-        loser.sendMessage("tough luck");
-
         if(this.playerLives.containsKey(loser.getUniqueId())) {
             if(this.playerLives.get(loser.getUniqueId()) == 0) return false;
 
@@ -127,12 +125,10 @@ public class Lives {
      */
     public void addPlayer(Player player) {
         if(this.playerLives.containsKey(player.getUniqueId())) {
-            player.sendMessage("welcome back");
             return;
         }
 
         if(this.playerLives.isEmpty()) {
-            player.sendMessage("numero uno I see");
             this.playerLives.put(player.getUniqueId(), 3);
         } else {
             int average = 0;
@@ -142,9 +138,7 @@ public class Lives {
             average = Math.max(1, average/this.playerLives.size());
             this.playerLives.put(player.getUniqueId(), average);
         }
-        player.sendMessage("happy hunger games");
         this.updateColors();
-        player.sendMessage("and may the odds be ever in your favor");
     }
 
     /**

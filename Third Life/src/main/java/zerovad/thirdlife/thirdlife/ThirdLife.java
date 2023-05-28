@@ -75,7 +75,6 @@ public final class ThirdLife extends JavaPlugin {
         @EventHandler
         public void lifeUpdate(PlayerDeathEvent event) {
             Player player = event.getEntity();
-            player.sendMessage("you dead");
             lives.decreaseLives(player);
         }
 
@@ -89,9 +88,7 @@ public final class ThirdLife extends JavaPlugin {
         @EventHandler
         public void onJoin(PlayerJoinEvent event) {
             Player player = event.getPlayer();
-            player.sendMessage("Welcome to die");
             lives.addPlayer(player);
-            player.sendMessage("die");
         }
 
     }
