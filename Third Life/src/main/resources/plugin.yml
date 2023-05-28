@@ -1,0 +1,15 @@
+name: Third-Life
+version: '${project.version}'
+main: zerovad.thirdlife.thirdlife.ThirdLife
+api-version: 1.19
+description: A plugin by Zerovad to recreate Grian's 3rd Life Series
+
+commands:
+  lives:
+    description: Used in case of emergencies in Third Life and to End sessions
+    usage: "/<command> display, /<command> remove <player-name>, /<command> add <player-name>, /<command> endSession"
+
+permissions:
+  Third-Life.lives:
+    description: Allow users to use the lives command.
+    default: true
